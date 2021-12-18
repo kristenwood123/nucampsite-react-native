@@ -84,8 +84,8 @@ const ContactNavigator = createStackNavigator(
 
 const MainNavigator = createDrawerNavigator(
   {
-    Home: { screen: HomeNavigator },
-    Directory: { screen: DirectoryNavigator },
+    // Home: { screen: HomeNavigator },
+    // Directory: { screen: DirectoryNavigator },
     About: { screen: AboutNavigator },
     Contact: { screen: ContactNavigator }
   },
