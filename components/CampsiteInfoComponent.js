@@ -1,8 +1,6 @@
-import { CardStyleInterpolators } from '@react-navigation/stack';
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
-import { ListItem } from 'react-native-elements/dist/list/ListItem';
 import { CAMPSITES } from '../shared/campsites';
 
 function RenderCampsite({campsite}) {
@@ -10,7 +8,7 @@ function RenderCampsite({campsite}) {
     return (
       <Card>
       <Card.Title>{item.name}</Card.Title>
-        <Card.Image source={require('./images/react-lake.jpg')}></Card.Image>
+        {/* <Card.Image source={require('./images/react-lake.jpg')}></Card.Image> */}
         <Text style={{margin: 10}}>
           {campsite.description}
         </Text>
@@ -20,7 +18,7 @@ function RenderCampsite({campsite}) {
   return <View/>
 }
 
-class CampsiteInfo extends Component {
+class CampsiteInfoComponent extends Component {
 
   constructor(props) {
     super(props)
@@ -40,4 +38,4 @@ class CampsiteInfo extends Component {
   }  
 }
 
-export default CampsiteInfo
+export default CampsiteInfoComponent

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ScrollView, FlatList, Text } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
-import { Avatar } from 'react-native-elements/dist/avatar/Avatar';
 import { PARTNERS } from '../shared/partners'
 
 
@@ -16,7 +15,7 @@ function Mission() {
 }
 
 
-class About extends Component {
+class AboutComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -31,18 +30,13 @@ class About extends Component {
   render() {
     const renderPartner = ({item}) => {
       return (
-        <ListItem
-          leftAvatar={{source: require('./images/bootstrap-logo.png')}}>
-          <ListItem.Title>{item.name}</ListItem.Title>
-          <ListItem.Subtitle>{item.description}</ListItem.Subtitle>
-        </ListItem>
+         <ListItem
+          title={item.name}
+          subtitle={item.description}
+          leftAvatar={{source: require('./images/bootstrap-logo.png')}}
+          />
       )
     }
-      // <ListItem
-      //     title={item.name}
-      //     subtitle={item.description}
-      //     leftAvatar={{source: require('./images/bootstrap-logo.png')}}
-      //     />
     return (
       <ScrollView>
         <Mission/>
@@ -58,4 +52,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default AboutComponent;

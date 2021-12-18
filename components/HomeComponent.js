@@ -8,9 +8,9 @@ import { PARTNERS } from '../shared/partners'
 function RenderItem({item}) {
   if(item) {
     return (
-      <Card>
-        <Card.Title>{item.name}</Card.Title>
-        <Card.Image source={require('./images/react-lake.jpg')}></Card.Image>
+      <Card
+         featuredTitle={item.name}
+          image={require('./images/react-lake.jpg')}>
         <Text style={{margin: 10}}>
           {item.description}
         </Text>
@@ -20,7 +20,7 @@ function RenderItem({item}) {
   return <View/>
 }
 
-class Home extends Component {
+class HomeComponent extends Component {
   constructor(props) {
         super(props);
         this.state = {
@@ -51,4 +51,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeComponent;

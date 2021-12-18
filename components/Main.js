@@ -6,16 +6,16 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer'
 
 // Components
-import Directory from './Directory'
-import CampsiteInfo from './CampsiteInfo';
-import Home from './Home'
-import About from './About'
-import Contact from './Contact'
+import DirectoryComponent from './DirectoryComponent'
+import CampsiteInfoComponent from './CampsiteInfoComponent';
+import HomeComponent from './HomeComponent'
+import AboutComponent from './AboutComponent'
+import ContactUsComponent from './ContactUsComponent'
 
 const DirectoryNavigator = createStackNavigator(
   {
-    Directory: { screen: Directory },
-    CampsiteInfo: { screen: CampsiteInfo }
+    Directory: { screen: DirectoryComponent },
+    CampsiteInfo: { screen: CampsiteInfoComponent }
   },
   {
     initialRouteName: 'Directory',
@@ -33,7 +33,7 @@ const DirectoryNavigator = createStackNavigator(
 
 const HomeNavigator = createStackNavigator(
   {
-    Home: { screen: Home },
+    Home: { screen: HomeComponent },
   },
   {
     defaultNavigationOptions: {
@@ -50,7 +50,7 @@ const HomeNavigator = createStackNavigator(
 
 const AboutNavigator = createStackNavigator(
   {
-    About: { screen: About },
+    About: { screen: AboutComponent },
   },
   {
     defaultNavigationOptions: {
@@ -67,7 +67,7 @@ const AboutNavigator = createStackNavigator(
 
 const ContactNavigator = createStackNavigator(
   {
-    Contact: { screen: Contact },
+    Contact: { screen: ContactUsComponent },
   },
   {
     defaultNavigationOptions: {
@@ -84,8 +84,8 @@ const ContactNavigator = createStackNavigator(
 
 const MainNavigator = createDrawerNavigator(
   {
-    // Home: { screen: HomeNavigator },
-    // Directory: { screen: DirectoryNavigator },
+    Home: { screen: HomeNavigator },
+    Directory: { screen: DirectoryNavigator },
     About: { screen: AboutNavigator },
     Contact: { screen: ContactNavigator }
   },

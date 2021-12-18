@@ -4,7 +4,7 @@ import { ListItem } from 'react-native-elements';
 import { CAMPSITES } from '../shared/campsites';
 
 
-class Directory extends Component {
+class DirectoryComponent extends Component {
   constructor(props) {
     super(props)
 
@@ -41,4 +41,4 @@ class Directory extends Component {
   
 }
 
-export default Directory
+export default DirectoryComponent
