@@ -3,16 +3,6 @@ import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { CAMPSITES } from '../shared/campsites';
 
-const renderDirectoryItem = ({item}) => {
-  return (
-    <ListItem
-      title={item.name}
-      subtitle={item.description}
-      onPress={() => props.onPress(item.id)}
-      leftAvatar={{ source: require('./images/react-lake.jpg')}}
-    />
-  )
-}
 
 class Directory extends Component {
   constructor(props) {
@@ -36,7 +26,7 @@ class Directory extends Component {
             subtitle={item.description}
             onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
             leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                />
+               />
             );
         };
 

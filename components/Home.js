@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { Card } from 'react-native-elements';
 import { CAMPSITES } from '../shared/campsites'
-import { PRMOTIONS } from '../shared/promotions';
+import { PROMOTIONS } from '../shared/promotions';
 import { PARTNERS } from '../shared/partners'
 
 function RenderItem({item}) {
   if(item) {
     return (
-      <Card
-        featuredTitle={item.name}
-        image={require('./images/react-lake.jpg')}
-      >
+      <Card>
+        <Card.Title>{item.name}</Card.Title>
+        <Card.Image source={require('./images/react-lake.jpg')}></Card.Image>
         <Text style={{margin: 10}}>
           {item.description}
         </Text>
@@ -22,7 +21,7 @@ function RenderItem({item}) {
 }
 
 class Home extends Component {
-   constructor(props) {
+  constructor(props) {
         super(props);
         this.state = {
             campsites: CAMPSITES,
@@ -30,22 +29,24 @@ class Home extends Component {
             partners: PARTNERS
         };
     }
-  static navigationOptons = {
+
+  static navigationOptions = {
     title: 'Home'
   }
+
   render() {
     return (
       <ScrollView>
-                <RenderItem 
-                    item={this.state.campsites.filter(campsite => campsite.featured)[0]}
-                />
-                <RenderItem 
-                    item={this.state.promotions.filter(promotion => promotion.featured)[0]}
-                />
-                <RenderItem 
-                    item={this.state.partners.filter(partner => partner.featured)[0]}
-                />
-            </ScrollView>
+        <RenderItem 
+           item={this.state.campsites.filter(campsite => campsite.featured)[0]}
+        />
+          <RenderItem 
+            item={this.state.promotions.filter(promotion => promotion.featured)[0]}
+        />
+          <RenderItem 
+          item={this.state.partners.filter(partner => partner.featured)[0]}
+        />
+      </ScrollView>
     );
   }
 }

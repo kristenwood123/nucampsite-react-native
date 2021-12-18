@@ -1,15 +1,16 @@
+import { CardStyleInterpolators } from '@react-navigation/stack';
 import React, {Component} from 'react'
 import { Text, View } from 'react-native';
 import { Card } from 'react-native-elements';
+import { ListItem } from 'react-native-elements/dist/list/ListItem';
 import { CAMPSITES } from '../shared/campsites';
 
 function RenderCampsite({campsite}) {
   if(campsite){
     return (
-      <Card 
-        featuredTitle={campsite.name}
-        image={require('./images/react-lake.jpg')} 
-      >
+      <Card>
+      <Card.Title>{item.name}</Card.Title>
+        <Card.Image source={require('./images/react-lake.jpg')}></Card.Image>
         <Text style={{margin: 10}}>
           {campsite.description}
         </Text>
@@ -20,11 +21,12 @@ function RenderCampsite({campsite}) {
 }
 
 class CampsiteInfo extends Component {
+
   constructor(props) {
     super(props)
-    this.state = {
-      campsites: CAMPSITES
-    }
+      this.state = {
+        campsites: CAMPSITES
+      }
   }
 
   static navigationOptions = {
