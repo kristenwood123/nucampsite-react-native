@@ -13,7 +13,7 @@ import DirectoryComponent from './DirectoryComponent'
 import CampsiteInfo from './CampsiteInfoComponent';
 import HomeComponent from './HomeComponent'
 import About from './AboutComponent'
-import ContactUsComponent from './ContactUsComponent'
+import ContactUs from './ContactUsComponent'
 
 const mapDispatchToProps = {
   fetchCampsites,
@@ -99,7 +99,7 @@ const AboutNavigator = createStackNavigator(
 
 const ContactNavigator = createStackNavigator(
   {
-    Contact: { screen: ContactUsComponent },
+    Contact: { screen: ContactUs },
   },
   {
         defaultNavigationOptions: ({navigation}) => ({
