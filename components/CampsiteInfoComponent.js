@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, FlatList } from 'react-native';
-import { Card, Icon } from 'react-native-elements';
+import { Text, View, ScrollView, FlatList, Modal, Button, StyleSheet } from 'react-native';
+import { Card, Icon, Form Rating } from 'react-native-elements';
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
 import { postFavorite } from '../redux/ActionCreators';
@@ -30,14 +30,22 @@ function RenderCampsite(props) {
         <Text style={{margin: 10}}>
           {campsite.description}
         </Text>
-        <Icon
-          name={props.favorite ? 'heart' : 'heart-o'}
+        <View>
+          <Icon
+            name={props.favorite ? 'heart' : 'heart-o'}
+            type='font-awesome'
+            color='#FC9483'
+            raised
+            reverse
+            onPress={() => props.favorite? console.log('Already set as  favorite') : props.markFavorite()}        
+          />
+          <Icon
           type='font-awesome'
-          color='#FC9483'
+          color='#5637DD'
           raised
           reverse
-          onPress={() => props.favorite? console.log('Already set as  faovrite') : props.markFavorite()}        
-        />
+          onPress={() => props.onShowModal()}/>
+        </View>
       </Card>
     )
   }
@@ -67,6 +75,15 @@ function RenderComments({comments}) {
 }
 
 class CampsiteInfo extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+       showModal: false
+    }
+  }
+   toggleModal() {
+        this.setState({showModal: !this.state.showModal});
+    }
 
   markFavorite(campsiteId) {
     this.props.postFavorite(campsiteId)
@@ -86,8 +103,16 @@ class CampsiteInfo extends Component {
         <RenderCampsite 
           campsite={campsite}
           favorite={this.props.favorites.includes(campsiteId)}
-          markFavorite={() => this.markFavorite(campsiteId)} />
+          markFavorite={() => this.markFavorite(campsiteId)}
+          onShowModal={() => this.toggleModal()} 
+          />
         <RenderComments comments={comments} />
+        <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.state.showModal}
+          onRequestClose={() => this.toggleModal()}>
+        </Modal>
       </ScrollView>
       )
   }  
