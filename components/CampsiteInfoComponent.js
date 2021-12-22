@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, ScrollView, FlatList, Modal, Button, StyleSheet } from 'react-native';
-import { Card, Icon, Form Rating } from 'react-native-elements';
+import { Card, Icon, Form, Rating } from 'react-native-elements';
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
 import { postFavorite } from '../redux/ActionCreators';
@@ -42,6 +42,7 @@ function RenderCampsite(props) {
           <Icon
           type='font-awesome'
           color='#5637DD'
+          name='pencil'
           raised
           reverse
           onPress={() => props.onShowModal()}/>
