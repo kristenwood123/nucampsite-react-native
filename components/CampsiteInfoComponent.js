@@ -30,7 +30,7 @@ function RenderCampsite(props) {
         <Text style={{margin: 10}}>
           {campsite.description}
         </Text>
-        <View>
+        <View style={styles.cardRow}>
           <Icon
             name={props.favorite ? 'heart' : 'heart-o'}
             type='font-awesome'
@@ -112,10 +112,33 @@ class CampsiteInfo extends Component {
           transparent={false}
           visible={this.state.showModal}
           onRequestClose={() => this.toggleModal()}>
+          <View style={styles.modal}>
+            <View style={{margin: 10}}>
+              <Button
+              onPress={() => this.toggleModal()}
+              color='#808080'
+              title='cancel'>
+
+              </Button>
+            </View>
+          </View>
         </Modal>
       </ScrollView>
       )
   }  
 }
 
+const styles = StyleSheet.create({
+  cardRow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    margin: 20
+  },
+  modal: {
+    justifyContent: 'center',
+    margin: 20
+  }
+})
 export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo)
