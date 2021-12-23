@@ -3,7 +3,7 @@ import { Text, View, ScrollView, FlatList, Modal, StyleSheet} from 'react-native
 import { Card, Icon, Rating, Input, Button } from 'react-native-elements';
 import { connect } from 'react-redux'
 import { baseUrl } from '../shared/baseUrl'
-import { postFavorite } from '../redux/ActionCreators';
+import { postComment, postFavorite } from '../redux/ActionCreators';
 
 
 const mapStateToProps = state => {
@@ -15,7 +15,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    postFavorite: campsiteId => (postFavorite(campsiteId))
+    postFavorite: campsiteId => (postFavorite(campsiteId)),
+    postComment
 };
 
 function RenderCampsite(props) {
@@ -90,7 +91,7 @@ class CampsiteInfo extends Component {
     }
 
     handleComment(campsiteId) {
-      console.log(JSON.stringify(this.state));
+      this.props.postComment(campsiteId, this.state.rating, this.state.author, this.state.text)
       this.toggleModal()
     }
 
@@ -135,36 +136,40 @@ class CampsiteInfo extends Component {
               showRating
               startingValue={this.state.rating}
               imageSize={40}
-              onFinishRating={rating => this.setState({rating})}
+              onFinishRating={rating => this.setState({rating: rating})}
               style={{paddingVertical: 10}}
             />
             <Input
               placeholder='Author'
               leftIcon={{type: 'font-awesome', name: 'user-o'}}
               leftIconContainerStyle={{paddingRight: 10}}
-              onChangeText={rating => this.setState({rating})}
-              value={this.state.author}
+              onChangeText={author => this.setState({author: author})}
+              value={author => this.setState({author: author})}
               />
             <Input
               placeholder='Comment'
               leftIcon={{type: 'font-awesome', name: 'comment-o'}}
               leftIconContainerStyle={{paddingRight: 10}}
-              onChangeText={rating => this.setState({rating})}
-              value={this.state.text}
+              onChangeText={text => this.setState({text: text})}
+              value={text => this.setState({text:text})}
               />
             <View style={{margin: 10}}>
                <Button
                style={styles.button}
-                onPress={() => this.toggleModal()}
+                onPress={() => {
+                  this.handleComment(campsiteId)
+                this.resetForm()}}
                 color='red'
                 title='Submit'>
               </Button>
               <Button
               style={styles.button}
-              onPress={() => this.resetForm()}
+              onPress={() => {
+                this.toggleModal()
+                this.resetForm()}}
               color='#5637DD'
-              title='Cancel'>
-              </Button>
+              title='Cancel'
+              />
             </View>
           </View>
         </Modal>

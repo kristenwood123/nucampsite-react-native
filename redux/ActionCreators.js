@@ -153,7 +153,7 @@ export const addFavorite = campsiteId => ({
     payload: campsiteId
 });
 
-export const postComment = (campsiteId, rating, author, text) => async dispatch => {
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
     const newComment = {
         campsiteId,
         rating,
@@ -168,6 +168,6 @@ export const postComment = (campsiteId, rating, author, text) => async dispatch 
 }
 
 export const addComment = comment => ({
-    type: ActionType.ADD_COMMENT,
+    type: ActionTypes.ADD_COMMENT,
     payload: comment
 })
