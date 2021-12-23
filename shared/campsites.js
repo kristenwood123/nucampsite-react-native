@@ -9,7 +9,7 @@ export const CAMPSITES = [
     },
     {
         id: 1,
-        name:"Chrome River Campground ",
+        name:"Chrome River Campground",
         image: "/assets/images/chrome-river.jpg",
         elevation: 877,
         featured: false,
