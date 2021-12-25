@@ -15,6 +15,7 @@ import HomeComponent from './HomeComponent'
 import About from './AboutComponent'
 import ContactUs from './ContactUsComponent'
 import Reservation from './ReservationComponent';
+import Favorites from './FavoritesComponent'
 
 const mapDispatchToProps = {
   fetchCampsites,
@@ -144,6 +145,8 @@ const ContactNavigator = createStackNavigator(
     }
 )
 
+
+
 const CustomDrawerContentComponent = props => (
     <ScrollView>
         <SafeAreaView 
@@ -231,7 +234,21 @@ const MainNavigator = createDrawerNavigator(
                   />
                 )
             }
-        }
+        },
+    Favorites: {
+      screen: FavoritesNavigator,
+      navigationOptions: {
+          drawerLabel: 'My Favorites',
+          drawerIcon: ({tintColor}) => (
+              <Icon
+                  name='heart'
+                  type='font-awesome'
+                  size={24}
+                  color={tintColor}
+              />
+          )
+      }
+    }
   },
   {
     drawerBackgroundColor: '#CEC8FF'
