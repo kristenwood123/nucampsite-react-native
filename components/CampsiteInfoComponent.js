@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, View, ScrollView, FlatList, Modal, StyleSheet, PanResponder } from 'react-native';
 import { Card, Icon, Rating, Input, Button } from 'react-native-elements';
 import { connect } from 'react-redux'
@@ -101,7 +101,7 @@ function RenderComments({comments}) {
     return (
       <View style={{margin: 10}}>
         <Text style={{fontSize: 14}}>{item.text}</Text>
-        <Text style={{fontSize: 12}}>{item.rating}</Text>
+        <Rating style={{fontSize: 12}}>{item.rating}</Rating>
         <Text style={{fontSize: 12}}>{`${item.author}, ${item.date}`}</Text>
       </View>
     )
@@ -119,7 +119,7 @@ function RenderComments({comments}) {
   )
 }
 
-class CampsiteInfo extends Component {
+class CampsiteInfoComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -237,4 +237,4 @@ const styles = StyleSheet.create({
     color: 'red'
   }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfoComponent)

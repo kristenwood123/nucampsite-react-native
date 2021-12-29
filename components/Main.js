@@ -10,7 +10,7 @@ import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '.
 
 // Components
 import DirectoryComponent from './DirectoryComponent'
-import CampsiteInfo from './CampsiteInfoComponent';
+import CampsiteInfoComponent from './CampsiteInfoComponent';
 import HomeComponent from './HomeComponent'
 import About from './AboutComponent'
 import ContactUs from './ContactUsComponent'
@@ -60,7 +60,7 @@ const DirectoryNavigator = createStackNavigator(
       /> 
     }) 
   },
-    CampsiteInfo: { screen: CampsiteInfo }
+    CampsiteInfo: { screen: CampsiteInfoComponent }
   },
   {
     initialRouteName: 'Directory',
