@@ -96,16 +96,21 @@ function RenderCampsite(props) {
 }
 
 function RenderComments({comments}) {
-
   const renderCommentItem = ({item}) => {
-    return (
-      <View style={{margin: 10}}>
-        <Text style={{fontSize: 14}}>{item.text}</Text>
-        <Rating style={{fontSize: 12}}>{item.rating}</Rating>
-        <Text style={{fontSize: 12}}>{`${item.author}, ${item.date}`}</Text>
-      </View>
-    )
+    return(
+            <View style={{margin: 10}}>
+                <Text style={{fontSize: 14}}>{item.text}</Text>
+                <Rating
+                    startingValue={item.rating}
+                    imageSize={10}
+                    style={{alignItems:'flex-start', paddingVertical:'5%'}}
+                    readonly
+                />
+                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
+            </View>
+        );
   }
+
   return (
     <Animatable.View animation='fadeInUp' duration={2000} delay={1000}>
       <Card title='Comments'>
@@ -133,8 +138,8 @@ class CampsiteInfoComponent {
         this.setState({showModal: !this.state.showModal});
     }
 
-    handleComment(campsiteId) {
-      this.props.postComment(campsiteId, this.state.rating, this.state.author, this.state.text)
+    handleComment(campsiteId, rating, author, text) {
+      this.props.postComment(campsiteId, rating, author, text)
       this.toggleModal()
     }
 
