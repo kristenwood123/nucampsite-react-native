@@ -10,7 +10,7 @@ import { fetchCampsites, fetchComments, fetchPromotions, fetchPartners } from '.
 
 // Components
 import DirectoryComponent from './DirectoryComponent'
-import CampsiteInfoComponent from './CampsiteInfoComponent';
+import CampsiteInfo from './CampsiteInfoComponent';
 import HomeComponent from './HomeComponent'
 import About from './AboutComponent'
 import ContactUs from './ContactUsComponent'
@@ -60,7 +60,7 @@ const DirectoryNavigator = createStackNavigator(
       /> 
     }) 
   },
-    CampsiteInfo: { screen: CampsiteInfoComponent }
+    CampsiteInfo: { screen: CampsiteInfo }
   },
   {
     initialRouteName: 'Directory',
@@ -145,25 +145,46 @@ const ContactNavigator = createStackNavigator(
     }
 )
 
-
-
-const CustomDrawerContentComponent = props => (
-    <ScrollView>
-        <SafeAreaView 
-            style={styles.container}
-            forceInset={{top: 'always', horizontal: 'never'}}>
-            <View style={styles.drawerHeader}>
-                <View style={{flex: 1}}>
-                    <Image source={require('./images/logo.png')} style={styles.drawerImage} />
-                </View>
-                <View style={{flex: 2}}>
-                    <Text style={styles.drawerHeaderText}>NuCamp</Text>
-                </View>
-            </View>
-            <DrawerItems {...props} />
-        </SafeAreaView>
-    </ScrollView>
+const FavoritesNavigator = createStackNavigator(
+    {
+        Favorites: { screen: Favorites }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='heart'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
 );
+
+// const CustomDrawerContentComponent = props => (
+//     <ScrollView>
+//         <SafeAreaView 
+//             style={styles.container}
+//             forceInset={{top: 'always', horizontal: 'never'}}>
+//             <View style={styles.drawerHeader}>
+//                 <View style={{flex: 1}}>
+//                     <Image source={require('./images/logo.png')} style={styles.drawerImage} />
+//                 </View>
+//                 <View style={{flex: 2}}>
+//                     <Text style={styles.drawerHeaderText}>NuCamp</Text>
+//                 </View>
+//             </View>
+//             <DrawerItems {...props} />
+//         </SafeAreaView>
+//     </ScrollView>
+// );
 
 const MainNavigator = createDrawerNavigator(
   {
@@ -251,7 +272,9 @@ const MainNavigator = createDrawerNavigator(
     }
   },
   {
+    initialRouteName: 'Home',
     drawerBackgroundColor: '#CEC8FF'
+    // contentComponent: CustomDrawerContentComponent
   }
 )
 

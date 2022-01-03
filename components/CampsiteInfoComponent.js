@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, View, ScrollView, FlatList, Modal, StyleSheet, PanResponder } from 'react-native';
 import { Card, Icon, Rating, Input, Button } from 'react-native-elements';
 import { connect } from 'react-redux'
@@ -26,6 +26,7 @@ function RenderCampsite(props) {
   const view = React.createRef();
 
   const recognizeDrag = ({dx}) => (dx < -200) ? true : false;
+  const recognizeComment = ({dx}) => (dx > 200) ? true : false;
   
   const panResponder = PanResponder.create({
         onStartShouldSetPanResponder: () => true,
@@ -53,7 +54,7 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
-            }
+              }
             return true;
         }
     });
@@ -81,12 +82,12 @@ function RenderCampsite(props) {
             onPress={() => props.favorite? console.log('Already set as  favorite') : props.markFavorite()}        
           />
           <Icon
-          type='font-awesome'
-          color='#5637DD'
-          name='pencil'
-          raised
-          reverse
-          onPress={() => props.onShowModal()}/>
+            type='font-awesome'
+            color='#5637DD'
+            name='pencil'
+            raised
+            reverse
+            onPress={() => props.onShowModal()}/>
         </View>
       </Card>
     </Animatable.View>
@@ -124,7 +125,7 @@ function RenderComments({comments}) {
   )
 }
 
-class CampsiteInfoComponent {
+class CampsiteInfo extends Component{
   constructor(props) {
     super(props)
     this.state = {
@@ -242,4 +243,4 @@ const styles = StyleSheet.create({
     color: 'red'
   }
 })
-export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfoComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo)
